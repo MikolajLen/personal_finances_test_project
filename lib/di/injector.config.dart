@@ -12,6 +12,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../create/cubit/create_transaction_cubit.dart' as _i225;
 import '../database/database_module.dart' as _i215;
 import '../database/transactions_dao.dart' as _i647;
 import '../database/transactions_database.dart' as _i393;
@@ -38,6 +39,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i580.TransactionsListCubit>(
       () => _i580.TransactionsListCubit(gh<_i334.TransactionsRepository>()),
+    );
+    gh.factory<_i225.CreateTransactionCubit>(
+      () => _i225.CreateTransactionCubit(gh<_i334.TransactionsRepository>()),
     );
     return this;
   }

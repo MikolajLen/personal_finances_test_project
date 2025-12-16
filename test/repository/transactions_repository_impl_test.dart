@@ -91,6 +91,18 @@ void main() {
         ).called(1);
       },
     );
+
+    test('should properly return list of categories', () async {
+      // given
+      final dao = _FakeDao();
+      final repository = TransactionsRepositoryImpl(dao);
+
+      // when
+      final result = await repository.loadCategories();
+
+      // then
+      expect(result, ['Food', 'Clothes', 'Car', 'Personal']);
+    });
   });
 }
 
@@ -128,6 +140,11 @@ class _FakeDao implements TransactionsDao {
     String? notes,
   ) {
     return Future.value(0);
+  }
+
+  @override
+  Future<List<String>> loadCategories() {
+    return Future.value(['Food', 'Clothes', 'Car', 'Personal']);
   }
 }
 

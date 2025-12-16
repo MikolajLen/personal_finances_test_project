@@ -19,7 +19,7 @@ class TransactionsListView extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            'Current balance: $balance',
+            'Current balance: ${balance.toStringAsFixed(2)}',
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),

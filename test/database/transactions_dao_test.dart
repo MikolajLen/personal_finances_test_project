@@ -68,5 +68,20 @@ void main() {
       // then
       expect(result, 60.0);
     });
+
+    test('verify db properly returns categories', () async {
+      // given
+      await transactionsDao.insertTransaction(-49.9, 'food', 1000, null);
+      await transactionsDao.insertTransaction(120.0, 'personal', 1000, null);
+      await transactionsDao.insertTransaction(-30.0, 'standard', 1000, null);
+      await transactionsDao.insertTransaction(19.9, 'personal', 1000, null);
+      await transactionsDao.insertTransaction(-5.9, 'food', 1000, null);
+
+      // when
+      final result = await transactionsDao.loadCategories();
+
+      // then
+      expect(result, ['food', 'personal', 'standard']);
+    });
   });
 }

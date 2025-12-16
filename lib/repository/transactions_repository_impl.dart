@@ -44,6 +44,11 @@ class TransactionsRepositoryImpl extends TransactionsRepository {
       transaction.notes,
     );
   }
+  
+  @override
+  Future<List<String>> loadCategories() {
+    return _transactionsDao.loadCategories();
+  }
 }
 
 extension DateTimeDaysSinceEpoch on DateTime {
